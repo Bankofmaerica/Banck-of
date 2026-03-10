@@ -1,279 +1,101 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bank of America-Cuenta</title>
+  <title>Bank of America - Inicio de Sesión</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f9fafb;
-    }
-    .navbar {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      background-color: #ffffff;
-      padding: 15px 30px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
-    .navbar-left {
-      font-weight: bold;
-      font-size: 20px;
+    .login-container {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .logo h1 {
       color: #d40511;
+      font-size: 28px;
     }
-    .navbar-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .welcome {
-      font-size: 16px;
-      color: #333;
-    }
-    .logout-btn {
-      padding: 10px 20px;
-      border: none;
-      background-color: #d40511;
-      color: #fff;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .logout-btn:hover {
-      background-color: #b1040d;
-    }
-
-    /* Menú horizontal */
-    .tab {
-      display: flex;
-      justify-content: center;
-      background: #f7f7f7;
-      border-radius: 8px;
-      padding: 8px 12px;
-      margin: 24px 16px;
-      gap: 0;
-    }
-    .tab a {
-      background: none;
-      padding: 10px 24px;
-      font-size: 15px;
-      color: #444;
-      border-radius: 8px 8px 0 0;
-      min-width: 110px;
-      text-align: center;
-      text-decoration: none;
-      font-family: inherit;
-      font-weight: normal;
-      transition: background 0.2s, color 0.2s;
-    }
-    .tab a:hover {
-      background: #f0f0f0;
-    }
-    .tab a.active {
-      background: #fff;
-      color: #222;
-      font-weight: 500;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
-    .main-card {
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    .formulario-grupo {
       margin-bottom: 20px;
     }
-    .main-card h2 {
-      margin: 0;
-      font-size: 24px;
-    }
-    .account-info {
-      color: #555;
-      margin: 5px 0 20px;
-    }
-    .balance {
-      text-align: center;
-      font-size: 40px;
-      font-weight: bold;
-      margin: 20px 0;
-    }
-    .actions {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-    .transfer-btn, .qr-btn {
-      padding: 10px 20px;
-      border-radius: 5px;
-      border: none;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .transfer-btn {
-      background-color: #d40511;
-      color: #fff;
-    }
-    .qr-btn {
-      background-color: #fff;
+    .formulario-grupo label {
+      display: block;
+      margin-bottom: 8px;
       color: #333;
+      font-weight: bold;
+    }
+    .formulario-grupo input {
+      width: 100%;
+      padding: 12px;
       border: 1px solid #ddd;
-    }
-    .summary {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-    .card {
-      flex: 1;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .card h4 {
-      margin: 0 0 10px;
+      border-radius: 5px;
       font-size: 16px;
-      color: #555;
+      font-family: Arial, sans-serif;
     }
-    .card p {
-      margin: 0;
-      font-size: 24px;
+    .formulario-grupo input:focus {
+      outline: none;
+      border-color: #d40511;
+      box-shadow: 0 0 5px rgba(212, 5, 17, 0.3);
+    }
+    .boton-enviar {
+      width: 100%;
+      padding: 12px;
+      background-color: #d40511;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
       font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
     }
-    .recent {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    .recent h3 {
-      margin-top: 0;
-    }
-    .movement {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px;
-      border: 1px solid #eee;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-    .movement-info {
-      display: flex;
-      flex-direction: column;
-    }
-    .movement-date {
-      font-size: 14px;
-      color: #888;
-    }
-    .movement-amount {
-      font-weight: bold;
-      color: #10b981;
+    .boton-enviar:hover {
+      background-color: #b1040d;
     }
   </style>
 </head>
 <body>
-
-  <div class="navbar">
-    <div class="navbar-left">Bank of America</div>
-    <div class="navbar-right">
-      <div class="welcome" id="bienvenida">Bienvenido</div> 
-      <button class="logout-btn" onclick="cerrarSesion()">Cerrar Sesión</button>
+  <div class="login-container">
+    <div class="logo">
+      <h1>Bank of America</h1>
+      <p>Banca Digital Segura</p>
     </div>
+    
+    <form id="formularioLogin">
+      <div class="formulario-grupo">
+        <label for="correo">Correo Electrónico</label>
+        <input type="email" id="correo" required placeholder="tu@email.com">
+      </div>
+      
+      <div class="formulario-grupo">
+        <label for="contraseña">Contraseña</label>
+        <input type="password" id="contraseña" required placeholder="Tu contraseña">
+      </div>
+      
+      <button type="submit" class="boton-enviar">Iniciar Sesión</button>
+    </form>
   </div>
 
-  <!-- Menú de navegación -->
-  <div class="tab">
-    <a href="Cuenta.html" class="tab-link active">Inicio</a>
-    <a href="productos.html" class="tab-link">Productos</a>
-    <a href="servicios.html" class="tab-link">Servicios</a>
-    <a href="novedades.html" class="tab-link">Novedades</a>
-  </div>
-
-  <div class="container">
-    <div class="main-card">
-      <h2 id="nombreCuenta"></h2>
-      <div class="account-info" id="numeroCuenta"></div>
-      <div class="balance" id="saldoCuenta"></div>
-      <div class="actions">
-        <button class="transfer-btn">Transferir</button>
-        <button class="qr-btn">Pago QR</button>
-      </div>
-    </div>
-
-    <div class="summary">
-      <div class="card">
-        <h4>Mis Créditos</h4>
-        <p>$<span id="creditosCuenta"></span></p>
-        <div style="font-size:12px;color:#777">Créditos activos</div>
-      </div>
-      <div class="card">
-        <h4>Préstamos</h4>
-        <p>$<span id="prestamosCuenta"></span></p>
-        <div style="font-size:12px;color:#777">Préstamos activos</div>
-      </div>
-      <div class="card">
-        <h4>Movimientos</h4>
-        <p id="cantidadMovs">0</p>
-        <div style="font-size:12px;color:#777">Transacciones realizadas</div>
-      </div>
-    </div>
-
-    <div class="recent">
-      <h3>Movimientos Recientes</h3>
-      <p style="color:#777; margin-bottom: 20px;">Últimas transacciones en tu cuenta</p>
-      <div id="listaMovimientos"></div>
-    </div>
-  </div>
-
-  <script>
-    // Verifica si hay sesión activa
-    const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
-    if (!usuario) window.location.href = "index.html";
-
-    // Rellena datos reales
-    document.getElementById("bienvenida").textContent = `Bienvenido, ${usuario.nombre}`;
-    document.getElementById("nombreCuenta").textContent = usuario.cuenta.nombre;
-    document.getElementById("numeroCuenta").textContent = `Cuenta: ${usuario.cuenta.numero}`;
-    document.getElementById("saldoCuenta").textContent = `$${usuario.cuenta.saldo}`;
-    document.getElementById("creditosCuenta").textContent = usuario.cuenta.creditos;
-    document.getElementById("prestamosCuenta").textContent = usuario.cuenta.prestamos;
-    document.getElementById("cantidadMovs").textContent = usuario.cuenta.movimientos.length;
-
-    // Movimientos
-    const listaMovs = document.getElementById("listaMovimientos");
-    if (usuario.cuenta.movimientos.length > 0) {
-      usuario.cuenta.movimientos.forEach(mov => {
-        const div = document.createElement("div");
-        div.className = "movement";
-        div.innerHTML = `
-          <div class="movement-info">
-            <div>${mov.descripcion}</div>
-            <div class="movement-date">${mov.fecha}</div>
-          </div>
-          <div class="movement-amount">${mov.monto}</div>
-        `;
-        listaMovs.appendChild(div);
-      });
-    } else {
-      listaMovs.innerHTML = `<p style="color:#777;">No hay movimientos registrados</p>`;
-    }
-
-    // Cierra sesión
-    function cerrarSesion() {
-      localStorage.removeItem("usuarioLogueado");
-      window.location.href = "index.html";
-    }
-  </script>
-
+  <!-- ✅ IMPORTANTE: type="module" para usar imports -->
+  <script type="module" src="script.js"></script>
 </body>
 </html>
