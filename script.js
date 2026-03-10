@@ -1,6 +1,3 @@
-// ✅ IMPORTA LOS USUARIOS PRIMERO
-import usuarios from './datos.js';
-
 document.addEventListener("DOMContentLoaded", function () {
   const formularioLogin = document.getElementById("formularioLogin");
   if (!formularioLogin) {
@@ -23,6 +20,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const contraseña = inputContraseña.value.trim();
 
     console.log("Intento de inicio de sesión:", { correo });
+
+    // Verifica que usuarios está disponible (cargado desde datos.js)
+    if (typeof usuarios === "undefined") {
+      console.error("La variable 'usuarios' no está definida. ¿datos.js fue cargado correctamente?");
+      alert("Error interno: usuarios no cargados. Revisa la consola del navegador.");
+      return;
+    }
 
     // Buscar usuario por correo (normalizado)
     const usuario = usuarios.find(usuario => {
