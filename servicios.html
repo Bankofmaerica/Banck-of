@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bank of America - Banca en Línea</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9fafb;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    header .logo {
+      display: flex;
+      flex-direction: column;
+    }
+    header .logo .nombre {
+      color: #d6001c;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    header .logo .subnombre {
+      color: #6b7280;
+      font-size: 14px;
+    }
+    .tab {
+      display: flex;
+      justify-content: center;
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin: 24px 16px;
+      gap: 0;
+    }
+    .tab-link {
+      display: inline-block;
+      text-decoration: none;
+      background: none;
+      border: none;
+      outline: none;
+      padding: 10px 24px;
+      font-size: 15px;
+      color: #444;
+      border-radius: 8px 8px 0 0;
+      min-width: 110px;
+      margin-right: 0;
+      transition: background 0.2s, color 0.2s;
+      font-family: inherit;
+      font-weight: 400;
+      box-shadow: none;
+      text-align: center;
+    }
+    .tab-link.active {
+      background: #fff;
+      color: #222;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .tab-link:hover {
+      background: #f0f0f0;
+    }
+    .usuario {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .usuario span {
+      font-size: 14px;
+    }
+    .contenedor {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    h2 {
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+    .subtitulo {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .card i {
+      font-size: 28px;
+      color: #ef4444;
+      margin-bottom: 10px;
+    }
+    .card h3 {
+      font-size: 16px;
+      margin: 10px 0 5px;
+    }
+    .card p {
+      font-size: 13px;
+      color: #6b7280;
+    }
+    .banners {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .banner {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .banner:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .banner h4 {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .banner h4 i {
+      margin-right: 10px;
+      color: #111827;
+    }
+    .banner p {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 10px;
+    }
+    .banner button {
+      background-color: #dc2626;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .banner button:hover {
+      background-color: #b91c1c;
+    }
+    .cerrar {
+      background-color: white;
+      border: 1px solid #d1d5db;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .cerrar:hover {
+      background-color: #f3f4f6;
+      color: #dc2626;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div class="nombre">Bank of America</div>
+      <div class="subnombre">Banca en Línea</div>
+    </div>
+    <div class="usuario">
+      <span>Bienvenido, Alfonso Méndez López</span>
+      <button class="cerrar"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+    </div>
+  </header>
+  <div class="tab">
+    <a href="Cuenta.html" class="tab-link">Inicio</a>
+    <a href="productos.html" class="tab-link active">Productos</a>
+    <a href="servicios.html" class="tab-link">Servicios</a>
+    <a href="novedades.html" class="tab-link">Novedades</a>
+  </div>
+
+  <div class="contenedor">
+    <h2>Servicios Destacados</h2>
+    <div class="subtitulo">Accede rápidamente a nuestros servicios más utilizados</div>
+
+    <div class="grid">
+      <div class="card">
+        <i class="fas fa-paper-plane"></i>
+        <h3>Transferir</h3>
+        <p>Envía dinero a otras cuentas</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-mobile-alt"></i>
+        <h3>Recargas</h3>
+        <p>Recarga tu celular</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Paz y Salvo</h3>
+        <p>Solicita certificados</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-file-alt"></i>
+        <h3>Certificados</h3>
+        <p>Descarga certificados</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-credit-card"></i>
+        <h3>Retirar sin Tarjeta</h3>
+        <p>Retira dinero sin tarjeta</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-money-bill-wave"></i>
+        <h3>Pagar</h3>
+        <p>Paga servicios y facturas</p>
+      </div>
+    </div>
+
+    <div class="banners">
+      <div class="banner">
+        <h4><i class="fas fa-qrcode"></i> Pago QR</h4>
+        <p>Realiza pagos escaneando códigos QR</p>
+        <button>Abrir Escáner QR</button>
+      </div>
+      <div class="banner">
+        <h4><i class="fas fa-paper-plane"></i> Transferir Ahora</h4>
+        <p>Envía dinero de forma rápida y segura</p>
+        <button>Hacer Transferencia</button>
+      </div>
+    </div>
+  </div>
+  <script src="data.js"></script>
+<script>
+  const user = JSON.parse(localStorage.getItem("usuarioLogueado"));
+  if (!user) {
+    window.location.href = "index.html";
+  } else {
+    document.querySelector(".usuario span").textContent = `Bienvenido, ${user.nombre}`;
+  }
+
+  document.querySelector(".cerrar")?.addEventListener("click", () => {
+    localStorage.removeItem("usuarioLogueado");
+    window.location.href = "index.html";
+  });
+</script>
+
+</body>
+</html>

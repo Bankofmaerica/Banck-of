@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bank of America - Novedades</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: #f9fafb;
+      color: #333;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: white;
+      border-bottom: 1px solid #ddd;
+    }
+    .logo {
+      display: flex;
+      flex-direction: column;
+    }
+    .logo .nombre {
+      color: #d4001a;
+      font-weight: bold;
+      font-size: 24px;
+    }
+    .logo .subnombre {
+      color: #4b4b4b;
+      font-size: 14px;
+    }
+    .usuario {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .usuario span {
+      font-size: 16px;
+    }
+    .cerrar {
+      background-color: white;
+      border: 1px solid #d1d5db;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .cerrar:hover {
+      background-color: #f3f4f6;
+      color: #dc2626;
+    }
+    .tab {
+      display: flex;
+      justify-content: center;
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin: 24px 16px;
+      gap: 0;
+    }
+    .tab-link {
+      display: inline-block;
+      text-decoration: none;
+      background: none;
+      border: none;
+      outline: none;
+      padding: 10px 24px;
+      font-size: 15px;
+      color: #444;
+      border-radius: 8px 8px 0 0;
+      min-width: 110px;
+      margin-right: 0;
+      transition: background 0.2s, color 0.2s;
+      font-family: inherit;
+      font-weight: 400;
+      box-shadow: none;
+      text-align: center;
+    }
+    .tab-link.active {
+      background: #fff;
+      color: #222;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .tab-link:hover {
+      background: #f0f0f0;
+    }
+    .contenedor {
+      max-width: 1000px;
+      margin: 30px auto;
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .section-title {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+    .section-subtitle {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 20px;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    .card-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .card-date {
+      font-size: 12px;
+      color: #999;
+      margin-top: 5px;
+    }
+    .badge {
+      background-color: #000;
+      color: white;
+      font-size: 12px;
+      border-radius: 20px;
+      padding: 4px 10px;
+      float: right;
+    }
+    .promo-banner {
+      background: linear-gradient(to right, #d4001a, #3a56e4);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .promo-banner button {
+      background-color: white;
+      color: #d4001a;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div class="nombre">Bank of America</div>
+      <div class="subnombre">Banca en Línea</div>
+    </div>
+    <div class="usuario">
+      <span>Bienvenido,</span>
+      <button class="cerrar"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+    </div>
+  </header>
+  <div class="tab">
+    <a href="Cuenta.html" class="tab-link">Inicio</a>
+    <a href="productos.html" class="tab-link">Productos</a>
+    <a href="servicios.html" class="tab-link">Servicios</a>
+    <a href="novedades.html" class="tab-link active">Novedades</a>
+  </div>
+  <div class="contenedor">
+    <div class="section-title">🔔 Novedades y Promociones</div>
+    <div class="section-subtitle">Mantente al día con las últimas noticias y ofertas</div>
+
+    <div class="card">
+      <div class="card-title">Nueva función de pagos QR disponible <span class="badge">Nueva Función</span></div>
+      <div>Ahora puedes realizar pagos escaneando códigos QR de forma rápida y segura.</div>
+      <div class="card-date">14/1/2024</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Tasas preferenciales para préstamos <span class="badge" style="background-color:#ccc; color:#333;">Promoción</span></div>
+      <div>Aprovecha nuestras tasas especiales para préstamos personales este mes.</div>
+      <div class="card-date">9/1/2024</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Mantenimiento programado <span class="badge" style="background-color:#eee; color:#000;">Mantenimiento</span></div>
+      <div>El sistema estará en mantenimiento el domingo de 2:00 AM a 4:00 AM.</div>
+      <div class="card-date">7/1/2024</div>
+    </div>
+
+    <div class="promo-banner">
+      <div>
+        <div style="font-size: 18px; font-weight: bold;">¡Aprovecha nuestras promociones!</div>
+        <div style="font-size: 14px;">Tasas preferenciales en préstamos y créditos especiales para clientes frecuentes.</div>
+      </div>
+      <button>Ver Ofertas</button>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    const user = JSON.parse(localStorage.getItem("usuarioLogueado"));
+    if (!user) {
+      window.location.href = "index.html";
+    } else {
+      document.querySelector(".usuario span").textContent = `Bienvenido, ${user.nombre}`;
+    }
+
+    document.querySelector(".cerrar")?.addEventListener("click", () => {
+      localStorage.removeItem("usuarioLogueado");
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>
