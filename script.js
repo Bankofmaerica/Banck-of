@@ -1,50 +1,50 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const loginForm = document.getElementById("loginForm");
-  if (!loginForm) {
-    console.error("No se encontró el formulario #loginForm en la página.");
+documento.addEventListener("DOMCargado", function () {
+  const formularioLogin = document.getElementById("formularioLogin");
+  if (!formularioLogin) {
+    console.error("No se encontró el formulario #formularioLogin en la página.");
     return;
   }
 
-  loginForm.addEventListener("submit", function (e) {
+  formularioLogin.addEventListener("enviar", function (e) {
     e.preventDefault();
 
-    const emailInput = document.getElementById("email");
-    const passwordInput = document.getElementById("password");
+    const inputCorreo = document.getElementById("correo");
+    const inputContraseña = document.getElementById("contraseña");
 
-    if (!emailInput || !passwordInput) {
-      console.error("No se encontraron los inputs de email o password.");
+    if (!inputCorreo || !inputContraseña) {
+      console.error("No se encontraron los campos de correo o contraseña.");
       return;
     }
 
-    const email = emailInput.value.trim().toLowerCase();
-    const password = passwordInput.value.trim();
+    const correo = inputCorreo.value.trim().toLowerCase();
+    const contraseña = inputContraseña.value.trim();
 
-    console.log("Intento de login:", { email /* no muestres password en prod */ });
+    console.log("Intento de inicio de sesión:", { correo /* no muestres contraseña en prod */ });
 
-    // Asegúrate de que la variable 'usuarios' está cargada (viene de data.js)
-    if (typeof usuarios === "undefined") {
-      console.error("La variable 'usuarios' no está definida. ¿data.js fue cargado correctamente?");
+    // Asegúrate de que la variable 'usuarios' está cargada (viene de datos.js)
+    if (typeof usuarios === "indefinido") {
+      console.error("La variable 'usuarios' no está definida. ¿datos.js fue cargado correctamente?");
       alert("Error interno: usuarios no cargados. Revisa la consola del navegador.");
       return;
     }
 
-    // Buscar usuario por email (normalizado)
-    const usuario = usuarios.find(user => {
-      if (!user || !user.email) return false;
-      return String(user.email).trim().toLowerCase() === email;
+    // Buscar usuario por correo (normalizado)
+    const usuario = usuarios.find(usuario => {
+      if (!usuario || !usuario.correo) return false;
+      return String(usuario.correo).trim().toLowerCase() === correo;
     });
 
-    console.log("Usuario encontrado:", usuario ? { email: usuario.email, nombre: usuario.nombre } : null);
+    console.log("Usuario encontrado:", usuario ? { correo: usuario.correo, nombre: usuario.nombre } : null);
 
     // Comparación de contraseña más tolerante (trim + String)
-    const passOk = usuario && String(usuario.password).trim() === String(password).trim();
+    const contraseñaOk = usuario && String(usuario.contraseña).trim() === String(contraseña).trim();
 
-    if (usuario && passOk) {
-      // Guardar en localStorage y redirigir
-      localStorage.setItem("usuarioLogueado", JSON.stringify(usuario));
-      window.location.href = "Cuenta.html";
+    if (usuario && contraseñaOk) {
+      // Guardar en almacenamientoLocal y redirigir
+      almacenamientoLocal.setItem("usuarioConectado", JSON.stringify(usuario));
+      ventana.ubicacion.href = "Cuenta.html";
     } else {
-      console.warn("Credenciales incorrectas para:", email);
+      console.advertencia("Credenciales incorrectas para:", correo);
       alert("Credenciales incorrectas");
     }
   });
