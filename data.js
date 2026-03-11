@@ -13,7 +13,7 @@ const usuarios = [
       movimientos: [
         {
           descripcion: "Depósito inicial",
-          fecha: "10/03/2026",
+          fecha: "26/02/2026",
           monto: "+$17500"
         }
       ]
