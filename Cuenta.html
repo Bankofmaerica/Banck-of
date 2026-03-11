@@ -3,156 +3,210 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bank of America - Inicio de Sesión</title>
+  <title>Bank of America - Mi Cuenta</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #c0392b 0%, #8e1a13 100%);
+      background: #f0f2f5;
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
-    .login-container {
-      background: white;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-      width: 100%;
-      max-width: 420px;
-    }
-
-    .logo {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .logo h1 {
-      color: #d40511;
-      font-size: 26px;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    .logo p {
-      color: #888;
-      font-size: 13px;
-      margin-top: 5px;
-    }
-
-    .logo .icono {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
-
-    .formulario-grupo {
-      margin-bottom: 20px;
-    }
-
-    .formulario-grupo label {
-      display: block;
-      margin-bottom: 8px;
-      color: #333;
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    .formulario-grupo input {
-      width: 100%;
-      padding: 12px 15px;
-      border: 1.5px solid #ddd;
-      border-radius: 6px;
-      font-size: 15px;
-      font-family: Arial, sans-serif;
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-
-    .formulario-grupo input:focus {
-      outline: none;
-      border-color: #d40511;
-      box-shadow: 0 0 6px rgba(212, 5, 17, 0.25);
-    }
-
-    .boton-enviar {
-      width: 100%;
-      padding: 13px;
+    /* NAVBAR */
+    nav {
       background-color: #d40511;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       color: white;
+    }
+    nav h1 { font-size: 20px; letter-spacing: 1px; }
+    nav span { font-size: 14px; opacity: 0.9; }
+    .btn-salir {
+      background: white;
+      color: #d40511;
       border: none;
-      border-radius: 6px;
-      font-size: 16px;
+      padding: 8px 18px;
+      border-radius: 5px;
       font-weight: bold;
       cursor: pointer;
-      transition: background-color 0.3s, transform 0.1s;
-      margin-top: 5px;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+    .btn-salir:hover { background: #f7d0d0; }
+
+    /* CONTENIDO */
+    .contenido {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
     }
 
-    .boton-enviar:hover {
-      background-color: #b1040d;
+    .bienvenida {
+      background: white;
+      border-radius: 10px;
+      padding: 25px 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     }
+    .bienvenida h2 { color: #333; font-size: 20px; }
+    .bienvenida p  { color: #888; font-size: 13px; margin-top: 4px; }
 
-    .boton-enviar:active {
-      transform: scale(0.98);
+    /* TARJETA SALDO */
+    .tarjeta-saldo {
+      background: linear-gradient(135deg, #d40511, #8e1a13);
+      border-radius: 12px;
+      padding: 30px;
+      color: white;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 20px rgba(212,5,17,0.35);
     }
+    .tarjeta-saldo .tipo-cuenta { font-size: 13px; opacity: 0.8; margin-bottom: 6px; }
+    .tarjeta-saldo .numero     { font-size: 15px; letter-spacing: 3px; margin-bottom: 20px; opacity: 0.9; }
+    .tarjeta-saldo .etiqueta   { font-size: 12px; opacity: 0.75; }
+    .tarjeta-saldo .saldo      { font-size: 38px; font-weight: bold; margin-top: 4px; }
 
-    .pie {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 12px;
-      color: #aaa;
+    /* STATS */
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 20px;
     }
+    .stat-card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px 25px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    .stat-card .etiqueta { font-size: 13px; color: #999; margin-bottom: 6px; }
+    .stat-card .valor    { font-size: 22px; font-weight: bold; color: #333; }
+    .stat-card .valor.verde { color: #27ae60; }
+    .stat-card .valor.rojo  { color: #d40511; }
+
+    /* MOVIMIENTOS */
+    .movimientos {
+      background: white;
+      border-radius: 10px;
+      padding: 25px 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    .movimientos h3 { font-size: 16px; color: #333; margin-bottom: 18px; }
+    .movimiento-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .movimiento-item:last-child { border-bottom: none; }
+    .mov-info .descripcion { font-size: 14px; color: #333; font-weight: bold; }
+    .mov-info .fecha       { font-size: 12px; color: #aaa; margin-top: 2px; }
+    .mov-monto {
+      font-size: 15px;
+      font-weight: bold;
+    }
+    .mov-monto.positivo { color: #27ae60; }
+    .mov-monto.negativo { color: #d40511; }
+
+    .sin-movimientos { color: #bbb; font-size: 14px; text-align: center; padding: 20px 0; }
   </style>
 </head>
 <body>
 
-  <div class="login-container">
-    <div class="logo">
-      <div class="icono">🏦</div>
-      <h1>Bank of America</h1>
-      <p>Banca Digital Segura</p>
+  <!-- NAVBAR -->
+  <nav>
+    <h1>🏦 Bank of America</h1>
+    <span id="navNombre">Cargando...</span>
+    <button class="btn-salir" onclick="cerrarSesion()">Cerrar sesión</button>
+  </nav>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="contenido">
+
+    <div class="bienvenida">
+      <h2 id="saludo">Bienvenido</h2>
+      <p>Resumen de tu cuenta bancaria</p>
     </div>
 
-    <form id="formularioLogin">
+    <!-- TARJETA SALDO -->
+    <div class="tarjeta-saldo">
+      <div class="tipo-cuenta" id="tipoCuenta">Cuenta Ahorros</div>
+      <div class="numero" id="numeroCuenta">**** **** **** ****</div>
+      <div class="etiqueta">Saldo disponible</div>
+      <div class="saldo" id="saldoCuenta">$0.00</div>
+    </div>
 
-      <div class="formulario-grupo">
-        <label for="correo">Correo Electrónico</label>
-        <input
-          type="email"
-          id="correo"
-          required
-          placeholder="tu@email.com"
-          autocomplete="email"
-        />
+    <!-- STATS -->
+    <div class="stats">
+      <div class="stat-card">
+        <div class="etiqueta">Créditos</div>
+        <div class="valor verde" id="creditos">$0.00</div>
       </div>
-
-      <div class="formulario-grupo">
-        <label for="contrasena">Contraseña</label>
-        <input
-          type="password"
-          id="contrasena"
-          required
-          placeholder="Tu contraseña"
-          autocomplete="current-password"
-        />
+      <div class="stat-card">
+        <div class="etiqueta">Préstamos</div>
+        <div class="valor rojo" id="prestamos">$0.00</div>
       </div>
+    </div>
 
-      <button type="submit" class="boton-enviar">Iniciar Sesión</button>
+    <!-- MOVIMIENTOS -->
+    <div class="movimientos">
+      <h3>📋 Últimos movimientos</h3>
+      <div id="listaMovimientos">
+        <p class="sin-movimientos">Sin movimientos registrados.</p>
+      </div>
+    </div>
 
-    </form>
-
-    <p class="pie">© 2026 Bank of America. Todos los derechos reservados.</p>
   </div>
 
-  <!-- Cargar primero datos, luego lógica -->
-  <script src="datos.js"></script>
-  <script src="script.js"></script>
+  <script>
+    // Cargar usuario desde localStorage
+    const usuarioLogueado = JSON.parse(localStorage.getItem("usuarioLogueado"));
+
+    if (!usuarioLogueado) {
+      // Si no hay sesión, volver al login
+      window.location.href = "login.html";
+    } else {
+      const u = usuarioLogueado;
+      const c = u.cuenta;
+
+      // Navbar y saludo
+      document.getElementById("navNombre").textContent = u.nombre;
+      document.getElementById("saludo").textContent    = "Bienvenido, " + u.nombre.split(" ")[0];
+
+      // Datos de cuenta
+      document.getElementById("tipoCuenta").textContent   = c.nombre;
+      document.getElementById("numeroCuenta").textContent = c.numero;
+      document.getElementById("saldoCuenta").textContent  = "$" + Number(c.saldo).toLocaleString("es-CO");
+      document.getElementById("creditos").textContent     = "$" + Number(c.creditos).toLocaleString("es-CO");
+      document.getElementById("prestamos").textContent    = "$" + Number(c.prestamos).toLocaleString("es-CO");
+
+      // Movimientos
+      const lista = document.getElementById("listaMovimientos");
+      if (c.movimientos && c.movimientos.length > 0) {
+        lista.innerHTML = "";
+        c.movimientos.forEach(function (mov) {
+          const esPositivo = String(mov.monto).startsWith("+");
+          lista.innerHTML += `
+            <div class="movimiento-item">
+              <div class="mov-info">
+                <div class="descripcion">${mov.descripcion}</div>
+                <div class="fecha">${mov.fecha}</div>
+              </div>
+              <div class="mov-monto ${esPositivo ? 'positivo' : 'negativo'}">${mov.monto}</div>
+            </div>
+          `;
+        });
+      }
+    }
+
+    function cerrarSesion() {
+      localStorage.removeItem("usuarioLogueado");
+      window.location.href = "login.html";
+    }
+  </script>
 
 </body>
 </html>
