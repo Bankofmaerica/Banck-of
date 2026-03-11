@@ -5,12 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bank of America - Inicio de Sesión</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: Arial, sans-serif;
       background: #f0f2f5;
@@ -19,95 +14,44 @@
       justify-content: center;
       align-items: center;
     }
-
     .login-container {
       background: white;
       padding: 40px;
       border-radius: 12px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
       width: 100%;
       max-width: 420px;
     }
-
-    .logo {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .logo h1 {
-      color: #d40511;
-      font-size: 26px;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    .logo p {
-      color: #888;
-      font-size: 13px;
-      margin-top: 5px;
-    }
-
-    .logo .icono {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
-
-    .formulario-grupo {
-      margin-bottom: 20px;
-    }
-
+    .logo { text-align: center; margin-bottom: 30px; }
+    .logo h1 { color: #d40511; font-size: 26px; font-weight: bold; letter-spacing: 1px; }
+    .logo p  { color: #888; font-size: 13px; margin-top: 5px; }
+    .logo .icono { font-size: 48px; margin-bottom: 10px; }
+    .formulario-grupo { margin-bottom: 20px; }
     .formulario-grupo label {
-      display: block;
-      margin-bottom: 8px;
-      color: #333;
-      font-weight: bold;
-      font-size: 14px;
+      display: block; margin-bottom: 8px;
+      color: #333; font-weight: bold; font-size: 14px;
     }
-
     .formulario-grupo input {
-      width: 100%;
-      padding: 12px 15px;
-      border: 1.5px solid #ddd;
-      border-radius: 6px;
-      font-size: 15px;
-      font-family: Arial, sans-serif;
+      width: 100%; padding: 12px 15px;
+      border: 1.5px solid #ddd; border-radius: 6px;
+      font-size: 15px; font-family: Arial, sans-serif;
       transition: border-color 0.3s, box-shadow 0.3s;
     }
-
     .formulario-grupo input:focus {
-      outline: none;
-      border-color: #d40511;
-      box-shadow: 0 0 6px rgba(212, 5, 17, 0.25);
+      outline: none; border-color: #d40511;
+      box-shadow: 0 0 6px rgba(212,5,17,0.25);
     }
-
     .boton-enviar {
-      width: 100%;
-      padding: 13px;
-      background-color: #d40511;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.1s;
+      width: 100%; padding: 13px;
+      background-color: #d40511; color: white;
+      border: none; border-radius: 6px;
+      font-size: 16px; font-weight: bold;
+      cursor: pointer; transition: background-color 0.3s, transform 0.1s;
       margin-top: 5px;
     }
-
-    .boton-enviar:hover {
-      background-color: #b1040d;
-    }
-
-    .boton-enviar:active {
-      transform: scale(0.98);
-    }
-
-    .pie {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 12px;
-      color: #aaa;
-    }
+    .boton-enviar:hover  { background-color: #b1040d; }
+    .boton-enviar:active { transform: scale(0.98); }
+    .pie { text-align: center; margin-top: 20px; font-size: 12px; color: #aaa; }
   </style>
 </head>
 <body>
@@ -120,44 +64,30 @@
     </div>
 
     <form id="formularioLogin">
-
       <div class="formulario-grupo">
         <label for="correo">Correo Electrónico</label>
-        <input
-          type="email"
-          id="correo"
-          required
-          placeholder="tu@email.com"
-          autocomplete="email"
-        />
+        <input type="email" id="correo" required
+          placeholder="tu@email.com" autocomplete="email" />
       </div>
-
       <div class="formulario-grupo">
         <label for="contrasena">Contraseña</label>
-        <input
-          type="password"
-          id="contrasena"
-          required
-          placeholder="Tu contraseña"
-          autocomplete="current-password"
-        />
+        <input type="password" id="contrasena" required
+          placeholder="Tu contraseña" autocomplete="current-password" />
       </div>
-
       <button type="submit" class="boton-enviar">Iniciar Sesión</button>
-
     </form>
 
     <p class="pie">© 2026 Bank of America. Todos los derechos reservados.</p>
   </div>
 
-  <!-- Si ya hay sesión activa, ir directo a Cuenta -->
+  <!-- Si ya hay sesión activa, ir directo a Cuenta sin pasar por login -->
   <script>
     if (localStorage.getItem("usuarioLogueado")) {
       window.location.replace("Cuenta.html");
     }
   </script>
 
-  <!-- script.js ya incluye los datos de usuarios -->
+  <!-- script.js contiene los datos de usuarios y la lógica del login -->
   <script src="script.js"></script>
 
 </body>
