@@ -150,6 +150,13 @@
     <p class="pie">© 2026 Bank of America. Todos los derechos reservados.</p>
   </div>
 
+  <!-- Si ya hay sesión activa, ir directo a Cuenta -->
+  <script>
+    if (localStorage.getItem("usuarioLogueado")) {
+      window.location.replace("Cuenta.html");
+    }
+  </script>
+
   <!-- script.js ya incluye los datos de usuarios -->
   <script src="script.js"></script>
 
