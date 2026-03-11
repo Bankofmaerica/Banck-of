@@ -6,307 +6,633 @@
   <title>Bank of America - Mi Cuenta</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: #f0f2f5; min-height: 100vh; }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f2f5;
-      min-height: 100vh;
-    }
-
-    /* NAVBAR */
+    /* NAV */
     nav {
-      background-color: #d40511;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
+      background: #d40511; padding: 15px 30px;
+      display: flex; justify-content: space-between; align-items: center; color: white;
     }
     nav h1 { font-size: 20px; letter-spacing: 1px; }
-    nav span { font-size: 14px; opacity: 0.9; }
+    nav span { font-size: 14px; opacity: .9; }
     .btn-salir {
-      background: white;
-      color: #d40511;
-      border: none;
-      padding: 8px 18px;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 14px;
-      transition: background 0.2s;
+      background: white; color: #d40511; border: none;
+      padding: 8px 18px; border-radius: 5px; font-weight: bold;
+      cursor: pointer; font-size: 14px; transition: background .2s;
     }
     .btn-salir:hover { background: #f7d0d0; }
 
-    /* CONTENIDO */
-    .contenido {
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
+    .contenido { max-width: 800px; margin: 30px auto; padding: 0 20px; }
 
     .bienvenida {
-      background: white;
-      border-radius: 10px;
-      padding: 25px 30px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      background: white; border-radius: 10px; padding: 25px 30px;
+      margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,.08);
     }
     .bienvenida h2 { color: #333; font-size: 20px; }
     .bienvenida p  { color: #888; font-size: 13px; margin-top: 4px; }
 
-    /* TARJETA SALDO */
     .tarjeta-saldo {
-      background: linear-gradient(135deg, #d40511, #8e1a13);
-      border-radius: 12px;
-      padding: 30px;
-      color: white;
-      margin-bottom: 20px;
-      box-shadow: 0 6px 20px rgba(212,5,17,0.35);
+      background: linear-gradient(135deg,#d40511,#8e1a13);
+      border-radius: 12px; padding: 30px; color: white;
+      margin-bottom: 20px; box-shadow: 0 6px 20px rgba(212,5,17,.35);
     }
-    .tarjeta-saldo .tipo-cuenta { font-size: 13px; opacity: 0.8; margin-bottom: 6px; }
-    .tarjeta-saldo .numero     { font-size: 15px; letter-spacing: 3px; margin-bottom: 20px; opacity: 0.9; }
-    .tarjeta-saldo .etiqueta   { font-size: 12px; opacity: 0.75; }
-    .tarjeta-saldo .saldo      { font-size: 38px; font-weight: bold; margin-top: 4px; }
+    .tarjeta-saldo .tipo-cuenta { font-size: 13px; opacity: .8; margin-bottom: 6px; }
+    .tarjeta-saldo .numero { font-size: 15px; letter-spacing: 3px; margin-bottom: 20px; opacity: .9; }
+    .tarjeta-saldo .etiqueta { font-size: 12px; opacity: .75; }
+    .tarjeta-saldo .saldo { font-size: 38px; font-weight: bold; margin-top: 4px; }
 
-    /* STATS */
-    .stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-    .stat-card {
-      background: white;
-      border-radius: 10px;
-      padding: 20px 25px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+    .stat-card { background: white; border-radius: 10px; padding: 20px 25px; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
     .stat-card .etiqueta { font-size: 13px; color: #999; margin-bottom: 6px; }
-    .stat-card .valor    { font-size: 22px; font-weight: bold; color: #333; }
+    .stat-card .valor { font-size: 22px; font-weight: bold; color: #333; }
     .stat-card .valor.verde { color: #27ae60; }
     .stat-card .valor.rojo  { color: #d40511; }
 
-    /* MOVIMIENTOS */
-    .movimientos {
-      background: white;
-      border-radius: 10px;
-      padding: 25px 30px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    }
-    .movimientos h3 { font-size: 16px; color: #333; margin-bottom: 18px; }
-    .movimiento-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px solid #f0f0f0;
-    }
-    .movimiento-item:last-child { border-bottom: none; }
-    .mov-info .descripcion { font-size: 14px; color: #333; font-weight: bold; }
-    .mov-info .fecha       { font-size: 12px; color: #aaa; margin-top: 2px; }
-    .mov-monto {
-      font-size: 15px;
-      font-weight: bold;
-    }
-    .mov-monto.positivo { color: #27ae60; }
-    .mov-monto.negativo { color: #d40511; }
-
-    .sin-movimientos { color: #bbb; font-size: 14px; text-align: center; padding: 20px 0; }
-
-    /* SERVICIOS DESTACADOS */
+    /* SERVICIOS */
     .servicios {
-      background: white;
-      border-radius: 10px;
-      padding: 25px 30px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      background: white; border-radius: 10px; padding: 25px 30px;
+      margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,.08);
     }
     .servicios h3 { font-size: 16px; color: #333; margin-bottom: 20px; font-weight: bold; }
-    .servicios-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-    @media (max-width: 500px) { .servicios-grid { grid-template-columns: repeat(3, 1fr); } }
-    .servicio-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-    }
+    .servicios-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+    @media(max-width:500px){ .servicios-grid{ grid-template-columns: repeat(3,1fr); } }
+    .servicio-item { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; }
     .servicio-icono {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      border: 1.5px solid #e0e0e0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      background: white;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 58px; height: 58px; border-radius: 50%; border: 1.5px solid #e0e0e0;
+      display: flex; align-items: center; justify-content: center; font-size: 22px;
+      background: white; transition: border-color .2s, box-shadow .2s;
     }
-    .servicio-item:hover .servicio-icono {
-      border-color: #d40511;
-      box-shadow: 0 0 8px rgba(212,5,17,0.2);
-    }
+    .servicio-item:hover .servicio-icono { border-color: #d40511; box-shadow: 0 0 8px rgba(212,5,17,.2); }
     .servicio-nombre { font-size: 11px; color: #555; text-align: center; line-height: 1.3; }
+
+    /* MOVIMIENTOS */
+    .movimientos { background: white; border-radius: 10px; padding: 25px 30px; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+    .movimientos h3 { font-size: 16px; color: #333; margin-bottom: 18px; }
+    .movimiento-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+    .movimiento-item:last-child { border-bottom: none; }
+    .mov-info .descripcion { font-size: 14px; color: #333; font-weight: bold; }
+    .mov-info .fecha { font-size: 12px; color: #aaa; margin-top: 2px; }
+    .mov-monto { font-size: 15px; font-weight: bold; }
+    .mov-monto.positivo { color: #27ae60; }
+    .mov-monto.negativo { color: #d40511; }
+    .sin-movimientos { color: #bbb; font-size: 14px; text-align: center; padding: 20px 0; }
+
+    /* BOTÓN FLOTANTE */
     .btn-soporte {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      width: 52px;
-      height: 52px;
-      background: #d40511;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      font-size: 22px;
-      cursor: pointer;
-      box-shadow: 0 4px 14px rgba(212,5,17,0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s, transform 0.1s;
+      position: fixed; bottom: 28px; right: 28px; width: 52px; height: 52px;
+      background: #d40511; color: white; border: none; border-radius: 50%;
+      font-size: 22px; cursor: pointer; box-shadow: 0 4px 14px rgba(212,5,17,.4);
+      display: flex; align-items: center; justify-content: center; transition: background .2s, transform .1s;
     }
     .btn-soporte:hover { background: #b1040d; transform: scale(1.07); }
+
+    /* MODALES */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5);
+      z-index: 1000; justify-content: center; align-items: center; padding: 20px;
+    }
+    .modal-overlay.activo { display: flex; }
+    .modal {
+      background: white; border-radius: 14px; width: 100%; max-width: 440px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.25); overflow: hidden; animation: slideUp .25s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+    .modal-header {
+      background: #d40511; color: white; padding: 18px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .modal-header h3 { font-size: 16px; }
+    .modal-cerrar { background: none; border: none; color: white; font-size: 22px; cursor: pointer; }
+    .modal-body { padding: 24px; }
+    .campo { margin-bottom: 16px; }
+    .campo label { display: block; font-size: 13px; color: #555; font-weight: bold; margin-bottom: 6px; }
+    .campo input, .campo select, .campo textarea {
+      width: 100%; padding: 11px 14px; border: 1.5px solid #ddd;
+      border-radius: 7px; font-size: 14px; font-family: Arial, sans-serif; transition: border-color .2s;
+    }
+    .campo input:focus, .campo select:focus, .campo textarea:focus { outline: none; border-color: #d40511; }
+    .campo textarea { resize: vertical; min-height: 80px; }
+    .modal-footer { padding: 0 24px 24px; display: flex; gap: 10px; }
+    .btn-primario {
+      flex: 1; padding: 12px; background: #d40511; color: white;
+      border: none; border-radius: 7px; font-size: 15px; font-weight: bold;
+      cursor: pointer; transition: background .2s;
+    }
+    .btn-primario:hover { background: #b1040d; }
+    .btn-secundario {
+      flex: 1; padding: 12px; background: #f0f0f0; color: #555;
+      border: none; border-radius: 7px; font-size: 15px; cursor: pointer; transition: background .2s;
+    }
+    .btn-secundario:hover { background: #e0e0e0; }
+    .alerta-exito {
+      display: none; background: #e8f8f0; border: 1.5px solid #27ae60;
+      border-radius: 8px; padding: 14px 18px; margin-bottom: 16px;
+      color: #1e8449; font-size: 14px; font-weight: bold; text-align: center;
+    }
+    .alerta-exito.visible { display: block; }
+    .certificado-box {
+      display: none; background: #f9f9f9; border: 1px solid #ddd;
+      border-radius: 8px; padding: 20px; text-align: center; margin-top: 16px;
+    }
+    .certificado-box.visible { display: block; }
+    .certificado-box h4 { color: #d40511; font-size: 15px; margin-bottom: 8px; }
+    .certificado-box p  { font-size: 13px; color: #555; line-height: 1.6; }
+
+    /* CHAT */
+    .chat-box {
+      border: 1px solid #eee; border-radius: 8px; height: 200px;
+      overflow-y: auto; padding: 12px; margin-bottom: 12px; background: #fafafa;
+    }
+    .chat-msg { margin-bottom: 10px; font-size: 13px; }
+    .chat-msg.bot span  { background: #f0f0f0; padding: 6px 10px; border-radius: 10px; display: inline-block; }
+    .chat-msg.user { text-align: right; }
+    .chat-msg.user span { background: #fde8e8; padding: 6px 10px; border-radius: 10px; display: inline-block; color: #d40511; }
+    .chat-input-row { display: flex; gap: 8px; }
+    .chat-input-row input { flex: 1; padding: 10px 12px; border: 1.5px solid #ddd; border-radius: 7px; font-size: 14px; }
+    .chat-input-row input:focus { outline: none; border-color: #d40511; }
+    .chat-input-row button { padding: 10px 16px; background: #d40511; color: white; border: none; border-radius: 7px; cursor: pointer; font-size: 18px; }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav>
-    <h1>🏦 Bank of America</h1>
-    <span id="navNombre">Cargando...</span>
-    <button class="btn-salir" onclick="cerrarSesion()">Cerrar sesión</button>
-  </nav>
+<nav>
+  <h1>🏦 Bank of America</h1>
+  <span id="navNombre">Cargando...</span>
+  <button class="btn-salir" onclick="cerrarSesion()">Cerrar sesión</button>
+</nav>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <div class="contenido">
+<div class="contenido">
 
-    <div class="bienvenida">
-      <h2 id="saludo">Bienvenido</h2>
-      <p>Resumen de tu cuenta bancaria</p>
-    </div>
-
-    <!-- TARJETA SALDO -->
-    <div class="tarjeta-saldo">
-      <div class="tipo-cuenta" id="tipoCuenta">Cuenta Ahorros</div>
-      <div class="numero" id="numeroCuenta">**** **** **** ****</div>
-      <div class="etiqueta">Saldo disponible</div>
-      <div class="saldo" id="saldoCuenta">$0.00</div>
-    </div>
-
-    <!-- STATS -->
-    <div class="stats">
-      <div class="stat-card">
-        <div class="etiqueta">Créditos</div>
-        <div class="valor verde" id="creditos">$0.00</div>
-      </div>
-      <div class="stat-card">
-        <div class="etiqueta">Préstamos</div>
-        <div class="valor rojo" id="prestamos">$0.00</div>
-      </div>
-    </div>
-
-    <!-- SERVICIOS DESTACADOS -->
-    <div class="servicios">
-      <h3>Servicios destacados</h3>
-      <div class="servicios-grid">
-
-        <div class="servicio-item" onclick="alert('Mis llaves Bank of America')">
-          <div class="servicio-icono">🔑</div>
-          <span class="servicio-nombre">Mis llaves<br>Bank-ofa</span>
-        </div>
-
-        <div class="servicio-item" onclick="alert('Transferir a una llave')">
-          <div class="servicio-icono">🔗</div>
-          <span class="servicio-nombre">Transferir a<br>una llave</span>
-        </div>
-
-        <div class="servicio-item" onclick="alert('Recargar mi cuenta')">
-          <div class="servicio-icono">💳</div>
-          <span class="servicio-nombre">Recargar mi<br>cuenta</span>
-        </div>
-
-        <div class="servicio-item" onclick="alert('Retirar sin tarjeta')">
-          <div class="servicio-icono">🏧</div>
-          <span class="servicio-nombre">Retirar sin<br>tarjeta</span>
-        </div>
-
-        <div class="servicio-item" onclick="alert('Certificados')">
-          <div class="servicio-icono">📄</div>
-          <span class="servicio-nombre">Certificados</span>
-        </div>
-
-        <div class="servicio-item" onclick="alert('Paz y salvo')">
-          <div class="servicio-icono">✅</div>
-          <span class="servicio-nombre">Paz y salvo</span>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- MOVIMIENTOS -->
-    <div class="movimientos">
-      <h3>📋 Últimos movimientos</h3>
-      <div id="listaMovimientos">
-        <p class="sin-movimientos">Sin movimientos registrados.</p>
-      </div>
-    </div>
-
+  <div class="bienvenida">
+    <h2 id="saludo">Bienvenido</h2>
+    <p>Resumen de tu cuenta bancaria</p>
   </div>
 
-  <!-- BOTÓN FLOTANTE SOPORTE -->
-  <button class="btn-soporte" onclick="alert('Soporte Bank of America\n📞 +1 800 432 1000')" title="Soporte">🎧</button>
+  <div class="tarjeta-saldo">
+    <div class="tipo-cuenta" id="tipoCuenta">Cuenta Ahorros</div>
+    <div class="numero" id="numeroCuenta">**** **** **** ****</div>
+    <div class="etiqueta">Saldo disponible</div>
+    <div class="saldo" id="saldoCuenta">$0.00</div>
+  </div>
 
-  <script>
-    // Cargar usuario desde localStorage
-    const usuarioLogueado = JSON.parse(localStorage.getItem("usuarioLogueado"));
+  <div class="stats">
+    <div class="stat-card">
+      <div class="etiqueta">Créditos</div>
+      <div class="valor verde" id="creditos">$0.00</div>
+    </div>
+    <div class="stat-card">
+      <div class="etiqueta">Préstamos</div>
+      <div class="valor rojo" id="prestamos">$0.00</div>
+    </div>
+  </div>
 
-    if (!usuarioLogueado) {
-      // Si no hay sesión, volver al login
-      window.location.href = "login.html";
-    } else {
-      const u = usuarioLogueado;
-      const c = u.cuenta;
+  <div class="servicios">
+    <h3>Servicios destacados</h3>
+    <div class="servicios-grid">
+      <div class="servicio-item" onclick="abrirModal('modalLlaves')">
+        <div class="servicio-icono">🔑</div>
+        <span class="servicio-nombre">Mis llaves<br>Bank-ofa</span>
+      </div>
+      <div class="servicio-item" onclick="abrirModal('modalTransferir')">
+        <div class="servicio-icono">🔗</div>
+        <span class="servicio-nombre">Transferir a<br>una llave</span>
+      </div>
+      <div class="servicio-item" onclick="abrirModal('modalRecargar')">
+        <div class="servicio-icono">💳</div>
+        <span class="servicio-nombre">Recargar mi<br>cuenta</span>
+      </div>
+      <div class="servicio-item" onclick="abrirModal('modalRetirar')">
+        <div class="servicio-icono">🏧</div>
+        <span class="servicio-nombre">Retirar sin<br>tarjeta</span>
+      </div>
+      <div class="servicio-item" onclick="abrirModal('modalCertificados')">
+        <div class="servicio-icono">📄</div>
+        <span class="servicio-nombre">Certificados</span>
+      </div>
+      <div class="servicio-item" onclick="abrirModal('modalPazSalvo')">
+        <div class="servicio-icono">✅</div>
+        <span class="servicio-nombre">Paz y salvo</span>
+      </div>
+    </div>
+  </div>
 
-      // Navbar y saludo
-      document.getElementById("navNombre").textContent = u.nombre;
-      document.getElementById("saludo").textContent    = "Bienvenido, " + u.nombre.split(" ")[0];
+  <div class="movimientos">
+    <h3>📋 Últimos movimientos</h3>
+    <div id="listaMovimientos">
+      <p class="sin-movimientos">Sin movimientos registrados.</p>
+    </div>
+  </div>
 
-      // Datos de cuenta
-      document.getElementById("tipoCuenta").textContent   = c.nombre;
-      document.getElementById("numeroCuenta").textContent = c.numero;
-      document.getElementById("saldoCuenta").textContent  = "$" + Number(c.saldo).toLocaleString("es-CO");
-      document.getElementById("creditos").textContent     = "$" + Number(c.creditos).toLocaleString("es-CO");
-      document.getElementById("prestamos").textContent    = "$" + Number(c.prestamos).toLocaleString("es-CO");
+</div>
 
-      // Movimientos
-      const lista = document.getElementById("listaMovimientos");
-      if (c.movimientos && c.movimientos.length > 0) {
-        lista.innerHTML = "";
-        c.movimientos.forEach(function (mov) {
-          const esPositivo = String(mov.monto).startsWith("+");
-          lista.innerHTML += `
-            <div class="movimiento-item">
-              <div class="mov-info">
-                <div class="descripcion">${mov.descripcion}</div>
-                <div class="fecha">${mov.fecha}</div>
-              </div>
-              <div class="mov-monto ${esPositivo ? 'positivo' : 'negativo'}">${mov.monto}</div>
-            </div>
-          `;
-        });
-      }
-    }
+<button class="btn-soporte" onclick="abrirModal('modalSoporte')" title="Soporte">🎧</button>
 
-    function cerrarSesion() {
-      localStorage.removeItem("usuarioLogueado");
-      window.location.href = "login.html";
-    }
-  </script>
+<!-- MODAL 1: MIS LLAVES -->
+<div class="modal-overlay" id="modalLlaves">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>🔑 Mis llaves Bank-ofa</h3>
+      <button class="modal-cerrar" onclick="cerrarModal('modalLlaves')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="alerta-exito" id="exitoLlaves">✅ ¡Llave registrada exitosamente!</div>
+      <div class="campo">
+        <label>Tipo de llave</label>
+        <select id="tipoLlave">
+          <option value="">Selecciona una opción</option>
+          <option>Número de celular</option>
+          <option>Correo electrónico</option>
+          <option>Cédula de ciudadanía</option>
+          <option>Número de cuenta</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label>Valor de la llave</label>
+        <input type="text" id="valorLlave" placeholder="Ej: 3001234567" />
+      </div>
+      <div class="campo">
+        <label>Confirmar llave</label>
+        <input type="text" id="confirmarLlave" placeholder="Repite el valor" />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secundario" onclick="cerrarModal('modalLlaves')">Cancelar</button>
+      <button class="btn-primario" onclick="registrarLlave()">Registrar llave</button>
+    </div>
+  </div>
+</div>
 
+<!-- MODAL 2: TRANSFERIR -->
+<div class="modal-overlay" id="modalTransferir">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>🔗 Transferir a una llave</h3>
+      <button class="modal-cerrar" onclick="cerrarModal('modalTransferir')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="alerta-exito" id="exitoTransferir">✅ ¡Transferencia realizada con éxito!</div>
+      <div class="campo">
+        <label>Tipo de llave destino</label>
+        <select id="tipoLlaveDest">
+          <option value="">Selecciona una opción</option>
+          <option>Número de celular</option>
+          <option>Correo electrónico</option>
+          <option>Cédula de ciudadanía</option>
+          <option>Número de cuenta</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label>Llave destino</label>
+        <input type="text" id="llaveDest" placeholder="Ej: 3001234567" />
+      </div>
+      <div class="campo">
+        <label>Monto a transferir ($)</label>
+        <input type="number" id="montoTransferir" placeholder="Ej: 50000" min="1" />
+      </div>
+      <div class="campo">
+        <label>Descripción (opcional)</label>
+        <input type="text" id="descTransferir" placeholder="Ej: Pago arriendo" />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secundario" onclick="cerrarModal('modalTransferir')">Cancelar</button>
+      <button class="btn-primario" onclick="realizarTransferencia()">Transferir</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 3: RECARGAR -->
+<div class="modal-overlay" id="modalRecargar">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>💳 Recargar mi cuenta</h3>
+      <button class="modal-cerrar" onclick="cerrarModal('modalRecargar')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="alerta-exito" id="exitoRecargar">✅ ¡Recarga realizada exitosamente!</div>
+      <div class="campo">
+        <label>Medio de pago</label>
+        <select id="medioPago">
+          <option value="">Selecciona una opción</option>
+          <option>Tarjeta de crédito</option>
+          <option>Tarjeta débito otra cuenta</option>
+          <option>PSE</option>
+          <option>Efectivo (corresponsal)</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label>Monto a recargar ($)</label>
+        <input type="number" id="montoRecargar" placeholder="Ej: 100000" min="1" />
+      </div>
+      <div class="campo">
+        <label>Cuenta destino</label>
+        <input type="text" id="cuentaRecarga" readonly style="background:#f5f5f5;color:#888;" />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secundario" onclick="cerrarModal('modalRecargar')">Cancelar</button>
+      <button class="btn-primario" onclick="realizarRecarga()">Recargar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 4: RETIRAR SIN TARJETA -->
+<div class="modal-overlay" id="modalRetirar">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>🏧 Retirar sin tarjeta</h3>
+      <button class="modal-cerrar" onclick="cerrarModal('modalRetirar')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="alerta-exito" id="exitoRetirar">
+        ✅ ¡Código generado! Preséntalo en el cajero.<br>
+        <span id="codigoRetiro" style="font-size:28px;letter-spacing:6px;color:#d40511;display:block;margin-top:8px;"></span>
+        <span style="font-size:12px;color:#888;">Válido por 10 minutos</span>
+      </div>
+      <div class="campo">
+        <label>Monto a retirar ($)</label>
+        <input type="number" id="montoRetirar" placeholder="Ej: 200000" min="1" />
+      </div>
+      <div class="campo">
+        <label>Cajero preferido</label>
+        <select id="cajeroRetirar">
+          <option value="">Selecciona uno</option>
+          <option>Cajero más cercano</option>
+          <option>Centro Comercial</option>
+          <option>Sucursal bancaria</option>
+          <option>Supermercado</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secundario" onclick="cerrarModal('modalRetirar')">Cancelar</button>
+      <button class="btn-primario" onclick="generarCodigoRetiro()">Generar código</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 5: CERTIFICADOS -->
+<div class="modal-overlay" id="modalCertificados">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>📄 Certificados</h3>
+      <button class="modal-cerrar" onclick="cerrarModal('modalCertificados')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="campo">
+        <label>Tipo de certificado</label>
+        <select id="tipoCertificado">
+          <option value="">Selecciona uno</option>
+          <option>Certificado de cuenta</option>
+          <option>Certificado de saldo</option>
+          <option>Extracto bancario</option>
+          <option>Certificado de retención en la fuente</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label>Fecha de corte</label>
+        <input type="date" id="fechaCertificado" />
+      </div>
+      <div class="certificado-box" id="certPreview">
+        <h4>🏦 Bank of America</h4>
+        <p id="certTexto"></p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secundario" onclick="cerrarModal('modalCertificados')">Cerrar</button>
+      <button class="btn-primario" onclick="generarCertificado()">Generar certificado</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 6: PAZ Y SALVO -->
+<div class="modal-overlay" id="modalPazSalvo">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>✅ Paz y salvo</h3>
+      <button class="modal-cerrar" onclick="cerrarModal('modalPazSalvo')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="alerta-exito" id="exitoPazSalvo"></div>
+      <div class="campo">
+        <label>Motivo del paz y salvo</label>
+        <select id="motivoPazSalvo">
+          <option value="">Selecciona uno</option>
+          <option>Cierre de cuenta</option>
+          <option>Trámite jurídico</option>
+          <option>Solicitud personal</option>
+          <option>Entidad externa</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label>Correo para envío</label>
+        <input type="email" id="correoPazSalvo" placeholder="tu@email.com" />
+      </div>
+      <div class="campo">
+        <label>Observaciones (opcional)</label>
+        <textarea id="obsPazSalvo" placeholder="Escribe aquí si tienes alguna observación..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secundario" onclick="cerrarModal('modalPazSalvo')">Cancelar</button>
+      <button class="btn-primario" onclick="solicitarPazSalvo()">Solicitar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 7: SOPORTE CHAT -->
+<div class="modal-overlay" id="modalSoporte">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>🎧 Soporte Bank of America</h3>
+      <button class="modal-cerrar" onclick="cerrarModal('modalSoporte')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="chat-box" id="chatBox">
+        <div class="chat-msg bot"><span>👋 Hola, soy el asistente virtual de Bank of America. ¿En qué puedo ayudarte hoy?<br><br>Puedes preguntarme sobre: <strong>saldo, transferir, retirar, certificado, cuenta, horario, telefono</strong></span></div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." onkeydown="if(event.key==='Enter') enviarMensaje()" />
+        <button onclick="enviarMensaje()">➤</button>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secundario" onclick="cerrarModal('modalSoporte')">Cerrar</button>
+      <a href="tel:+18004321000" style="flex:1;text-decoration:none;">
+        <button class="btn-primario" style="width:100%">📞 800-432-1000</button>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ---- CARGAR DATOS ---- */
+  const u = JSON.parse(localStorage.getItem("usuarioLogueado"));
+  if (!u) { window.location.href = "login.html"; }
+  else {
+    const c = u.cuenta;
+    document.getElementById("navNombre").textContent    = u.nombre;
+    document.getElementById("saludo").textContent       = "Bienvenido, " + u.nombre.split(" ")[0];
+    document.getElementById("tipoCuenta").textContent   = c.nombre;
+    document.getElementById("numeroCuenta").textContent = c.numero;
+    document.getElementById("cuentaRecarga").value      = c.numero;
+    actualizarSaldoUI();
+    actualizarMovimientosUI();
+    document.getElementById("creditos").textContent  = "$" + Number(c.creditos).toLocaleString("es-CO");
+    document.getElementById("prestamos").textContent = "$" + Number(c.prestamos).toLocaleString("es-CO");
+  }
+
+  /* ---- MODALES ---- */
+  function abrirModal(id) { document.getElementById(id).classList.add("activo"); }
+  function cerrarModal(id) {
+    document.getElementById(id).classList.remove("activo");
+    document.querySelectorAll("#"+id+" .alerta-exito").forEach(e => { e.classList.remove("visible"); e.style.display=""; });
+    document.querySelectorAll("#"+id+" .certificado-box").forEach(e => e.classList.remove("visible"));
+  }
+  document.querySelectorAll(".modal-overlay").forEach(o => {
+    o.addEventListener("click", e => { if(e.target===o) cerrarModal(o.id); });
+  });
+
+  /* ---- 1. LLAVES ---- */
+  function registrarLlave() {
+    const tipo  = document.getElementById("tipoLlave").value;
+    const valor = document.getElementById("valorLlave").value.trim();
+    const conf  = document.getElementById("confirmarLlave").value.trim();
+    if (!tipo||!valor||!conf) { alert("Completa todos los campos."); return; }
+    if (valor!==conf) { alert("Las llaves no coinciden."); return; }
+    document.getElementById("exitoLlaves").classList.add("visible");
+  }
+
+  /* ---- 2. TRANSFERIR ---- */
+  function realizarTransferencia() {
+    const tipo  = document.getElementById("tipoLlaveDest").value;
+    const dest  = document.getElementById("llaveDest").value.trim();
+    const monto = parseFloat(document.getElementById("montoTransferir").value);
+    const desc  = document.getElementById("descTransferir").value.trim() || "Transferencia";
+    if (!tipo||!dest||!monto||monto<=0) { alert("Completa todos los campos correctamente."); return; }
+    if (monto > u.cuenta.saldo) { alert("Saldo insuficiente."); return; }
+    u.cuenta.saldo -= monto;
+    u.cuenta.movimientos.unshift({ descripcion: desc + " → " + dest, fecha: hoy(), monto: "-$"+monto.toLocaleString("es-CO") });
+    guardar();
+    document.getElementById("exitoTransferir").classList.add("visible");
+  }
+
+  /* ---- 3. RECARGAR ---- */
+  function realizarRecarga() {
+    const medio = document.getElementById("medioPago").value;
+    const monto = parseFloat(document.getElementById("montoRecargar").value);
+    if (!medio||!monto||monto<=0) { alert("Completa todos los campos correctamente."); return; }
+    u.cuenta.saldo += monto;
+    u.cuenta.movimientos.unshift({ descripcion: "Recarga vía "+medio, fecha: hoy(), monto: "+$"+monto.toLocaleString("es-CO") });
+    guardar();
+    document.getElementById("exitoRecargar").classList.add("visible");
+  }
+
+  /* ---- 4. RETIRAR ---- */
+  function generarCodigoRetiro() {
+    const monto  = parseFloat(document.getElementById("montoRetirar").value);
+    const cajero = document.getElementById("cajeroRetirar").value;
+    if (!monto||monto<=0||!cajero) { alert("Completa todos los campos."); return; }
+    if (monto > u.cuenta.saldo) { alert("Saldo insuficiente."); return; }
+    u.cuenta.saldo -= monto;
+    u.cuenta.movimientos.unshift({ descripcion: "Retiro sin tarjeta — "+cajero, fecha: hoy(), monto: "-$"+monto.toLocaleString("es-CO") });
+    guardar();
+    document.getElementById("codigoRetiro").textContent = Math.floor(100000+Math.random()*900000);
+    document.getElementById("exitoRetirar").classList.add("visible");
+  }
+
+  /* ---- 5. CERTIFICADO ---- */
+  function generarCertificado() {
+    const tipo  = document.getElementById("tipoCertificado").value;
+    const fecha = document.getElementById("fechaCertificado").value;
+    if (!tipo||!fecha) { alert("Selecciona el tipo y la fecha."); return; }
+    const f = new Date(fecha).toLocaleDateString("es-CO",{year:"numeric",month:"long",day:"numeric"});
+    document.getElementById("certTexto").innerHTML =
+      `Certificamos que <strong>${u.nombre}</strong> es titular de la <strong>${u.cuenta.nombre}</strong>
+       N° <strong>${u.cuenta.numero}</strong> con saldo de
+       <strong>$${Number(u.cuenta.saldo).toLocaleString("es-CO")}</strong>
+       a la fecha de corte <strong>${f}</strong>.<br><br>
+       <em>Generado electrónicamente — Bank of America</em>`;
+    document.getElementById("certPreview").classList.add("visible");
+  }
+
+  /* ---- 6. PAZ Y SALVO ---- */
+  function solicitarPazSalvo() {
+    const motivo = document.getElementById("motivoPazSalvo").value;
+    const correo = document.getElementById("correoPazSalvo").value.trim();
+    if (!motivo||!correo) { alert("Completa los campos requeridos."); return; }
+    const a = document.getElementById("exitoPazSalvo");
+    a.textContent = "✅ Solicitud enviada a "+correo+". Recibirás tu paz y salvo en 24 horas hábiles.";
+    a.classList.add("visible");
+  }
+
+  /* ---- 7. CHAT ---- */
+  const respuestasBot = [
+    { keys:["saldo","dinero","cuanto"],   resp: () => "Tu saldo actual es $"+Number(u.cuenta.saldo).toLocaleString("es-CO")+"." },
+    { keys:["transferir","transferencia"], resp: () => "Usa el servicio '🔗 Transferir a una llave' en el menú de servicios." },
+    { keys:["retirar","retiro","cajero"],  resp: () => "Genera un código en '🏧 Retirar sin tarjeta' y preséntalo en el cajero." },
+    { keys:["recargar","recarga","deposito"], resp: () => "Ve a '💳 Recargar mi cuenta' para añadir saldo." },
+    { keys:["certificado","extracto"],    resp: () => "Solicita tu certificado en '📄 Certificados'." },
+    { keys:["llave","llaves"],            resp: () => "Registra tus llaves en '🔑 Mis llaves Bank-ofa'." },
+    { keys:["paz","salvo"],               resp: () => "Solicita tu paz y salvo en el servicio '✅ Paz y salvo'." },
+    { keys:["cuenta","numero"],           resp: () => "Tu número de cuenta es: "+u.cuenta.numero },
+    { keys:["horario","atienden"],        resp: () => "Atendemos lunes a viernes de 8am a 6pm y sábados de 9am a 1pm." },
+    { keys:["telefono","llamar","linea"], resp: () => "Llámanos al 📞 800-432-1000 (línea gratuita)." },
+    { keys:["hola","buenos","buenas"],    resp: () => "¡Hola! ¿En qué puedo ayudarte hoy?" },
+    { keys:["gracias","thanks"],          resp: () => "¡Con mucho gusto! ¿Hay algo más en lo que pueda ayudarte?" },
+  ];
+
+  function enviarMensaje() {
+    const input  = document.getElementById("chatInput");
+    const texto  = input.value.trim();
+    if (!texto) return;
+    const chat   = document.getElementById("chatBox");
+    chat.innerHTML += `<div class="chat-msg user"><span>${texto}</span></div>`;
+    input.value  = "";
+    const lower  = texto.toLowerCase();
+    const match  = respuestasBot.find(r => r.keys.some(k => lower.includes(k)));
+    const respuesta = match ? match.resp() : "Entendido. Un agente revisará tu caso. También puedes llamar al 📞 800-432-1000.";
+    setTimeout(() => {
+      chat.innerHTML += `<div class="chat-msg bot"><span>${respuesta}</span></div>`;
+      chat.scrollTop  = chat.scrollHeight;
+    }, 500);
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  /* ---- HELPERS ---- */
+  function hoy() { return new Date().toLocaleDateString("es-CO"); }
+  function guardar() {
+    localStorage.setItem("usuarioLogueado", JSON.stringify(u));
+    actualizarSaldoUI();
+    actualizarMovimientosUI();
+  }
+  function actualizarSaldoUI() {
+    document.getElementById("saldoCuenta").textContent = "$"+Number(u.cuenta.saldo).toLocaleString("es-CO");
+  }
+  function actualizarMovimientosUI() {
+    const lista = document.getElementById("listaMovimientos");
+    const movs  = u.cuenta.movimientos;
+    if (!movs||movs.length===0) { lista.innerHTML='<p class="sin-movimientos">Sin movimientos registrados.</p>'; return; }
+    lista.innerHTML = "";
+    movs.forEach(mov => {
+      const pos = String(mov.monto).startsWith("+");
+      lista.innerHTML += `
+        <div class="movimiento-item">
+          <div class="mov-info">
+            <div class="descripcion">${mov.descripcion}</div>
+            <div class="fecha">${mov.fecha}</div>
+          </div>
+          <div class="mov-monto ${pos?'positivo':'negativo'}">${mov.monto}</div>
+        </div>`;
+    });
+  }
+  function cerrarSesion() {
+    localStorage.removeItem("usuarioLogueado");
+    window.location.href = "login.html";
+  }
+</script>
 </body>
 </html>
