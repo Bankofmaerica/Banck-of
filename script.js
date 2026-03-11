@@ -8,7 +8,7 @@ const usuarios = [
     cuenta: {
       nombre: "Cuenta Ahorros",
       numero: "4177 7300 8891 6385",
-      saldo: 17500,
+      saldo: 16874,
       creditos: 0,
       prestamos: 0,
       movimientos: [
@@ -57,4 +57,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
 
