@@ -15,7 +15,7 @@ const usuarios = [
         {
           descripcion: "Depósito inicial",
           fecha: "26/02/2026",
-          monto: "+$17500"
+          monto: "+$16874"
         }
       ]
     }
@@ -57,3 +57,4 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
