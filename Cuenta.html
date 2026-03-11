@@ -10,93 +10,149 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #c0392b 0%, #8e1a13 100%);
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
     }
+
     .login-container {
       background: white;
       padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
       width: 100%;
-      max-width: 400px;
+      max-width: 420px;
     }
+
     .logo {
       text-align: center;
       margin-bottom: 30px;
     }
+
     .logo h1 {
       color: #d40511;
-      font-size: 28px;
+      font-size: 26px;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
+
+    .logo p {
+      color: #888;
+      font-size: 13px;
+      margin-top: 5px;
+    }
+
+    .logo .icono {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
     .formulario-grupo {
       margin-bottom: 20px;
     }
+
     .formulario-grupo label {
       display: block;
       margin-bottom: 8px;
       color: #333;
       font-weight: bold;
+      font-size: 14px;
     }
+
     .formulario-grupo input {
       width: 100%;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-size: 16px;
+      padding: 12px 15px;
+      border: 1.5px solid #ddd;
+      border-radius: 6px;
+      font-size: 15px;
       font-family: Arial, sans-serif;
+      transition: border-color 0.3s, box-shadow 0.3s;
     }
+
     .formulario-grupo input:focus {
       outline: none;
       border-color: #d40511;
-      box-shadow: 0 0 5px rgba(212, 5, 17, 0.3);
+      box-shadow: 0 0 6px rgba(212, 5, 17, 0.25);
     }
+
     .boton-enviar {
       width: 100%;
-      padding: 12px;
+      padding: 13px;
       background-color: #d40511;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s, transform 0.1s;
+      margin-top: 5px;
     }
+
     .boton-enviar:hover {
       background-color: #b1040d;
+    }
+
+    .boton-enviar:active {
+      transform: scale(0.98);
+    }
+
+    .pie {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 12px;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
+
   <div class="login-container">
     <div class="logo">
+      <div class="icono">🏦</div>
       <h1>Bank of America</h1>
       <p>Banca Digital Segura</p>
     </div>
-    
+
     <form id="formularioLogin">
+
       <div class="formulario-grupo">
         <label for="correo">Correo Electrónico</label>
-        <input type="email" id="correo" required placeholder="tu@email.com">
+        <input
+          type="email"
+          id="correo"
+          required
+          placeholder="tu@email.com"
+          autocomplete="email"
+        />
       </div>
-      
+
       <div class="formulario-grupo">
-        <label for="contraseña">Contraseña</label>
-        <input type="password" id="contraseña" required placeholder="Tu contraseña">
+        <label for="contrasena">Contraseña</label>
+        <input
+          type="password"
+          id="contrasena"
+          required
+          placeholder="Tu contraseña"
+          autocomplete="current-password"
+        />
       </div>
-      
+
       <button type="submit" class="boton-enviar">Iniciar Sesión</button>
+
     </form>
+
+    <p class="pie">© 2026 Bank of America. Todos los derechos reservados.</p>
   </div>
 
-  <!-- ✅ IMPORTANTE: Cargar primero datos.js, luego script.js -->
+  <!-- Cargar primero datos, luego lógica -->
   <script src="datos.js"></script>
   <script src="script.js"></script>
+
 </body>
 </html>
