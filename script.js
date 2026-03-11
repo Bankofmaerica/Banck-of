@@ -2,7 +2,7 @@
 const usuarios = [
   {
     inicioSesion: "Bank-ofa",
-    correo: "edwinrodrigocungachi@gmail.com",
+    correo: "edwincungachi56@gmail.com",
     contrasena: "7528",
     nombre: "EDWIN RODRIGO CUNGACHI TACURI",
     cuenta: {
