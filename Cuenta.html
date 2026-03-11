@@ -471,7 +471,7 @@
 <script>
   /* ---- CARGAR DATOS ---- */
   const u = JSON.parse(localStorage.getItem("usuarioLogueado"));
-  if (!u) { window.location.replace("login.html"); }
+  if (!u) { window.location.replace("index.html"); }
   else {
     const c = u.cuenta;
     document.getElementById("navNombre").textContent    = u.nombre;
@@ -631,8 +631,7 @@
   }
   function cerrarSesion() {
     localStorage.removeItem("usuarioLogueado");
-    // Reemplaza el historial para que el botón atrás no regrese a Cuenta
-    window.location.replace("login.html");
+    window.location.replace("index.html");
   }
 
   // Bloquear botón "atrás" del navegador mientras hay sesión activa
@@ -641,7 +640,7 @@
     if (localStorage.getItem("usuarioLogueado")) {
       history.pushState(null, null, location.href);
     } else {
-      window.location.replace("login.html");
+      window.location.replace("index.html");
     }
   });
 </script>
