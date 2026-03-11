@@ -2,7 +2,7 @@ const usuarios = [
   {
     inicioSesion: "Bank-ofa",
     correo: "edwinrodrigocungachi@gmail.com",
-    contraseña: "7528",
+    contrasena: "7528",
     nombre: "EDWIN RODRIGO CUNGACHI TACURI",
     cuenta: {
       nombre: "Cuenta Ahorros",
@@ -11,10 +11,10 @@ const usuarios = [
       creditos: 0,
       prestamos: 0,
       movimientos: [
-        { 
-          descripcion: "Depósito inicial", 
-          fecha: "10/03/2026", 
-          monto: "+$17500" 
+        {
+          descripcion: "Depósito inicial",
+          fecha: "10/03/2026",
+          monto: "+$17500"
         }
       ]
     }
